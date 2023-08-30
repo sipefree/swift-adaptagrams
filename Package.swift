@@ -34,7 +34,6 @@ let package = Package(
             name: "Adaptagrams",
             dependencies: ["CXXAvoid", "CXXVPSC", "CXXCola", "CXXTopology", "CXXProject", "CXXDialect"],
             path: "./Sources/Adaptagrams",
-            publicHeadersPath: "Headers",
             cxxSettings: [
                 .headerSearchPath("../../Includes"),
             ],
