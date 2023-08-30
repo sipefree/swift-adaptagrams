@@ -103,6 +103,9 @@ let package = Package(
             cxxSettings: [
                 .headerSearchPath("."),
                 
+            ],
+            linkerSettings: [
+                .linkedLibrary("C++"),
             ]
         ),
 //        .testTarget(

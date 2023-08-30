@@ -1,6 +1,0 @@
-module Topology {
-  umbrella header "libtopology_umbrella.h"
-  
-  export *
-  module * { export * }
-}
