@@ -1,1 +1,1 @@
-#include "src/libavoid.h"
+#include "libavoid/libavoid.h"
