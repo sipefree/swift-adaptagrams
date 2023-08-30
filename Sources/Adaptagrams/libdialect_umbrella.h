@@ -1,0 +1,20 @@
+#ifndef LIBDIALECT_UMBRELLA_H
+#define LIBDIALECT_UMBRELLA_H
+#include "libdialect/aca.h"
+#include "libdialect/chains.h"
+#include "libdialect/commontypes.h"
+#include "libdialect/constraints.h"
+#include "libdialect/faces.h"
+#include "libdialect/graphs.h"
+#include "libdialect/hola.h"
+#include "libdialect/io.h"
+#include "libdialect/nearalign.h"
+#include "libdialect/nodeconfig.h"
+#include "libdialect/opts.h"
+#include "libdialect/ortho.h"
+#include "libdialect/peeling.h"
+#include "libdialect/planarise.h"
+#include "libdialect/routing.h"
+#include "libdialect/treeplacement.h"
+#include "libdialect/trees.h"
+#endif // LIBDIALECT_UMBRELLA_H
