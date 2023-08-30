@@ -1,0 +1,6 @@
+module Avoid {
+  umbrella header "libavoid_umbrella.h"
+  
+  export *
+  module * { export * }
+}
