@@ -1,0 +1,1 @@
+../../adaptagrams/cola/libavoid/obstacle.cpp

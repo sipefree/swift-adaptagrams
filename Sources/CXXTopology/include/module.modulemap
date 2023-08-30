@@ -1,0 +1,31 @@
+module CXXTopology {
+    requires cplusplus11
+
+    module cola_topology_addon {
+        header "cola_topology_addon.h"
+        export *
+    }
+
+    module orthogonal_topology {
+        header "orthogonal_topology.h"
+        textual header "_orthogonal_topology.h"
+        export *
+    }
+
+    module topology_constraints {
+        header "topology_constraints.h"
+        export *
+    }
+
+    module topology_graph {
+        header "topology_graph.h"
+        export *
+    }
+
+    module util {
+        header "util.h"
+        export *
+    }
+
+    export *
+}

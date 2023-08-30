@@ -1,0 +1,1 @@
+../../../adaptagrams/cola/libavoid/junction.h

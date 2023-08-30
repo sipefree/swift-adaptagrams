@@ -4,8 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-adaptagrams",
+    name: "adaptagrams-testapp",
+    platforms: [
+        .macOS(.v13),
+    ],
     products: [
+        .executable(
+            name: "adaptagrams-testapp",
+            targets: ["adaptagrams-testapp"]),
+
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "Adaptagrams",
@@ -16,98 +23,176 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
 
+        .executableTarget(
+            name: "adaptagrams-testapp",
+            dependencies: ["Adaptagrams"],
+            path: "./Sources/adaptagrams-testapp",
+            swiftSettings: [.interoperabilityMode(.Cxx)]
+        ),
+
         .target(
             name: "Adaptagrams",
-            dependencies: [],
+            dependencies: ["CXXAvoid", "CXXVPSC", "CXXCola", "CXXTopology", "CXXProject", "CXXDialect"],
             path: "./Sources/Adaptagrams",
-            sources: [
-                "./libavoid/obstacle.cpp",
-                "./libavoid/actioninfo.cpp",
-                "./libavoid/mtst.cpp",
-                "./libavoid/geometry.cpp",
-                "./libavoid/hyperedgeimprover.cpp",
-                "./libavoid/makepath.cpp",
-                "./libavoid/junction.cpp",
-                "./libavoid/geomtypes.cpp",
-                "./libavoid/orthogonal.cpp",
-                "./libavoid/hyperedge.cpp",
-                "./libavoid/graph.cpp",
-                "./libavoid/timer.cpp",
-                "./libavoid/router.cpp",
-                "./libavoid/scanline.cpp",
-                "./libavoid/vpsc.cpp",
-                "./libavoid/viscluster.cpp",
-                "./libavoid/visibility.cpp",
-                "./libavoid/connend.cpp",
-                "./libavoid/shape.cpp",
-                "./libavoid/connector.cpp",
-                "./libavoid/vertices.cpp",
-                "./libavoid/connectionpin.cpp",
-                "./libavoid/hyperedgetree.cpp",
-                "./libtopology/compute_forces.cpp",
-                "./libtopology/resize.cpp",
-                "./libtopology/orthogonal_topology.cpp",
-                "./libtopology/cola_topology_addon.cpp",
-                "./libtopology/topology_graph.cpp",
-                "./libtopology/topology_constraints.cpp",
-                "./libtopology/topology_constraints_constructor.cpp",
-                "./libdialect/nexes.cpp",
-                "./libdialect/nodes.cpp",
-                "./libdialect/logging.cpp",
-                "./libdialect/peeling.cpp",
-                "./libdialect/trees.cpp",
-                "./libdialect/faces.cpp",
-                "./libdialect/planarise.cpp",
-                "./libdialect/routing.cpp",
-                "./libdialect/nearalign.cpp",
-                "./libdialect/sides.cpp",
-                "./libdialect/chains.cpp",
-                "./libdialect/nodeconfig.cpp",
-                "./libdialect/quadaction.cpp",
-                "./libdialect/expansion.cpp",
-                "./libdialect/graphs.cpp",
-                "./libdialect/aca.cpp",
-                "./libdialect/qalookup.cpp",
-                "./libdialect/constraints.cpp",
-                "./libdialect/io.cpp",
-                "./libdialect/ortho.cpp",
-                "./libdialect/bendseqlookup.cpp",
-                "./libdialect/treeplacement.cpp",
-                "./libdialect/hola.cpp",
-                "./libdialect/edges.cpp",
-                "./libproject/util.cpp",
-                "./libproject/project.cpp",
-                "./libvpsc/cbuffer.cpp",
-                "./libvpsc/constraint.cpp",
-                "./libvpsc/block.cpp",
-                "./libvpsc/solve_VPSC.cpp",
-                "./libvpsc/rectangle.cpp",
-                "./libvpsc/variable.cpp",
-                "./libvpsc/blocks.cpp",
-                "./libcola/colafd.cpp",
-                "./libcola/pseudorandom.cpp",
-                "./libcola/box.cpp",
-                "./libcola/compound_constraints.cpp",
-                "./libcola/shapepair.cpp",
-                "./libcola/cola.cpp",
-                "./libcola/gradient_projection.cpp",
-                "./libcola/straightener.cpp",
-                "./libcola/cc_nonoverlapconstraints.cpp",
-                "./libcola/conjugate_gradient.cpp",
-                "./libcola/cluster.cpp",
-                "./libcola/cc_clustercontainmentconstraints.cpp",
-                "./libcola/connected_components.cpp",
-                "./libcola/convex_hull.cpp"
-            ],
-            publicHeadersPath: ".",
             cxxSettings: [
-                .headerSearchPath("."),
-                
+                .headerSearchPath("../../Includes"),
             ],
-            linkerSettings: [
-                .linkedLibrary("C++"),
-            ]
+            swiftSettings: [.interoperabilityMode(.Cxx)]
         ),
+
+        .target(
+            name: "CXXAvoid",
+            dependencies: [],
+            path: "./Sources/CXXAvoid",
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        .target(
+            name: "CXXVPSC",
+            dependencies: [],
+            path: "./Sources/CXXVPSC",
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        .target(
+            name: "CXXCola",
+            dependencies: ["CXXVPSC"],
+            path: "./Sources/CXXCola",
+            exclude: ["output_svg.cpp"],
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        .target(
+            name: "CXXTopology",
+            dependencies: ["CXXAvoid", "CXXVPSC", "CXXCola"],
+            path: "./Sources/CXXTopology",
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        .target(
+            name: "CXXProject",
+            dependencies: [],
+            path: "./Sources/CXXProject",
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        .target(
+            name: "CXXDialect",
+            dependencies: ["CXXAvoid", "CXXVPSC", "CXXCola"],
+            path: "./Sources/CXXDialect",
+            cxxSettings: [
+                .headerSearchPath("../../Includes"),
+            ]
+            
+        ),
+
+        // .target(
+        //     name: "Adaptagrams",
+        //     dependencies: [],
+        //     path: "./Sources/Adaptagrams",
+        //     sources: [
+        //         "./libavoid/obstacle.cpp",
+        //         "./libavoid/actioninfo.cpp",
+        //         "./libavoid/mtst.cpp",
+        //         "./libavoid/geometry.cpp",
+        //         "./libavoid/hyperedgeimprover.cpp",
+        //         "./libavoid/makepath.cpp",
+        //         "./libavoid/junction.cpp",
+        //         "./libavoid/geomtypes.cpp",
+        //         "./libavoid/orthogonal.cpp",
+        //         "./libavoid/hyperedge.cpp",
+        //         "./libavoid/graph.cpp",
+        //         "./libavoid/timer.cpp",
+        //         "./libavoid/router.cpp",
+        //         "./libavoid/scanline.cpp",
+        //         "./libavoid/vpsc.cpp",
+        //         "./libavoid/viscluster.cpp",
+        //         "./libavoid/visibility.cpp",
+        //         "./libavoid/connend.cpp",
+        //         "./libavoid/shape.cpp",
+        //         "./libavoid/connector.cpp",
+        //         "./libavoid/vertices.cpp",
+        //         "./libavoid/connectionpin.cpp",
+        //         "./libavoid/hyperedgetree.cpp",
+        //         "./libtopology/compute_forces.cpp",
+        //         "./libtopology/resize.cpp",
+        //         "./libtopology/orthogonal_topology.cpp",
+        //         "./libtopology/cola_topology_addon.cpp",
+        //         "./libtopology/topology_graph.cpp",
+        //         "./libtopology/topology_constraints.cpp",
+        //         "./libtopology/topology_constraints_constructor.cpp",
+        //         "./libdialect/nexes.cpp",
+        //         "./libdialect/nodes.cpp",
+        //         "./libdialect/logging.cpp",
+        //         "./libdialect/peeling.cpp",
+        //         "./libdialect/trees.cpp",
+        //         "./libdialect/faces.cpp",
+        //         "./libdialect/planarise.cpp",
+        //         "./libdialect/routing.cpp",
+        //         "./libdialect/nearalign.cpp",
+        //         "./libdialect/sides.cpp",
+        //         "./libdialect/chains.cpp",
+        //         "./libdialect/nodeconfig.cpp",
+        //         "./libdialect/quadaction.cpp",
+        //         "./libdialect/expansion.cpp",
+        //         "./libdialect/graphs.cpp",
+        //         "./libdialect/aca.cpp",
+        //         "./libdialect/qalookup.cpp",
+        //         "./libdialect/constraints.cpp",
+        //         "./libdialect/io.cpp",
+        //         "./libdialect/ortho.cpp",
+        //         "./libdialect/bendseqlookup.cpp",
+        //         "./libdialect/treeplacement.cpp",
+        //         "./libdialect/hola.cpp",
+        //         "./libdialect/edges.cpp",
+        //         "./libproject/util.cpp",
+        //         "./libproject/project.cpp",
+        //         "./libvpsc/cbuffer.cpp",
+        //         "./libvpsc/constraint.cpp",
+        //         "./libvpsc/block.cpp",
+        //         "./libvpsc/solve_VPSC.cpp",
+        //         "./libvpsc/rectangle.cpp",
+        //         "./libvpsc/variable.cpp",
+        //         "./libvpsc/blocks.cpp",
+        //         "./libcola/colafd.cpp",
+        //         "./libcola/pseudorandom.cpp",
+        //         "./libcola/box.cpp",
+        //         "./libcola/compound_constraints.cpp",
+        //         "./libcola/shapepair.cpp",
+        //         "./libcola/cola.cpp",
+        //         "./libcola/gradient_projection.cpp",
+        //         "./libcola/straightener.cpp",
+        //         "./libcola/cc_nonoverlapconstraints.cpp",
+        //         "./libcola/conjugate_gradient.cpp",
+        //         "./libcola/cluster.cpp",
+        //         "./libcola/cc_clustercontainmentconstraints.cpp",
+        //         "./libcola/connected_components.cpp",
+        //         "./libcola/convex_hull.cpp"
+        //     ],
+        //     publicHeadersPath: ".",
+        //     cxxSettings: [
+        //         .headerSearchPath("."),
+                
+        //     ],
+        //     linkerSettings: [
+        //         .linkedLibrary("C++"),
+        //     ]
+        // ),
 //        .testTarget(
 //            name: "AdaptagramsTests",
 //            dependencies: ["Adaptagrams"],
@@ -115,5 +200,5 @@ let package = Package(
 //            swiftSettings: [.interoperabilityMode(.Cxx)]
 //        )
     ],
-    cxxLanguageStandard: .cxx11
+    cxxLanguageStandard: .gnucxx11
 )

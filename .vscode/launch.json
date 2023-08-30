@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug adaptagrams-testapp",
+            "program": "${workspaceFolder:adaptagrams}/.build/debug/adaptagrams-testapp",
+            "args": [],
+            "cwd": "${workspaceFolder:adaptagrams}",
+            "preLaunchTask": "swift: Build Debug adaptagrams-testapp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release adaptagrams-testapp",
+            "program": "${workspaceFolder:adaptagrams}/.build/release/adaptagrams-testapp",
+            "args": [],
+            "cwd": "${workspaceFolder:adaptagrams}",
+            "preLaunchTask": "swift: Build Release adaptagrams-testapp"
+        }
+    ]
+}

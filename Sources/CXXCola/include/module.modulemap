@@ -1,0 +1,75 @@
+module CXXCola {
+    requires cplusplus11
+
+    module cola {
+        header "cola.h"
+        export *
+    }
+
+    module cluster {
+        header "cluster.h"
+        export *
+    }
+
+    module commondefs {
+        header "commondefs.h"
+        export *
+    }
+
+    module compound_constraints {
+        header "compound_constraints.h"
+        export *
+    }
+
+    module pseudorandom {
+        header "pseudorandom.h"
+        export *
+    }
+
+    module exceptions {
+        header "exceptions.h"
+        export *
+    }
+
+    module gradient_projection {
+        header "gradient_projection.h"
+        export *
+    }
+
+    module sparse_matrix {
+        header "sparse_matrix.h"
+        export *
+    }
+
+    module straightener {
+        header "straightener.h"
+        export *
+    }
+
+    module unused {
+        header "unused.h"
+        export *
+    }
+
+    module cc_clustercontainmentconstraints {
+        header "cc_clustercontainmentconstraints.h"
+        export *
+    }
+
+    module cc_nonoverlapconstraints {
+        header "cc_nonoverlapconstraints.h"
+        export *
+    }
+
+    module box {
+        header "box.h"
+        export *
+    }
+
+    module shapepair {
+        header "shapepair.h"
+        export *
+    }
+
+    export *
+}

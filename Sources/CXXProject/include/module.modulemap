@@ -1,0 +1,21 @@
+module CXXProject {
+    requires cplusplus11
+
+    module project {
+        header "project.h"
+        export *
+    }
+
+    module util {
+        header "util.h"
+        export *
+    }
+
+    module variable {
+        header "variable.h"
+        export *
+    }
+
+    export *
+
+}
