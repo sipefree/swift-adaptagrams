@@ -1,0 +1,3 @@
+[submodule "adaptagrams"]
+	path = adaptagrams
+	url = https://github.com/mjwybrow/adaptagrams.git
